@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Community Tool Sharing</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">🔧 Community Tool And Resource Sharing </div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#tools">Available Tools</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="register.html?next=share">Share Tool</a></li>
+        <li><a href="payment.html?next=share">Pay</a></li>
+        <button onclick="window.location.href='login.html'"loginUser()
+        style="padding:10px 20px; border:none; border-radius:8px; margin-left:40px;
+        background-color:#3b82f6;color:white; font-weight:bold; cursor:pointer;">
+        Login
+</button>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <h1>Welcome to CTRS!</h1>
+    <p>Borrow & Share Community Tools With Ease</p>
+    <button onclick="handleShareClick()">Share a Tool</button>
+  </section>
+
+</script>
+  <!-- Tool Filter -->
+  <section class="filter">
+    <input type="text" id="searchBar" placeholder="Search tools..." oninput="filterTools()" />
+  </section>
+
+  <!-- Tool List -->
+  <section id="tools" class="tool-list">
+    <div class="tool-card">
+      <img src="C:\Users\Jyoti\Desktop\project tool images\prod_surestrike_nail_hammers_MRW16C_01_2000x2000.png" alt="Hammer" />
+      <h3>Hammer</h3>
+      <p>Status: <span class="available">Available</span></p>
+      <button class="request-btn" onclick="window.location.href='user_detials.html'">Request</button>
+    </div>
+    <div class="tool-card">
+      <img src="C:\Users\Jyoti\Desktop\project tool images\measuring tape.webp" alt="Measuring Tape" />
+      <h3>Measuring Tape</h3>
+      <p>Status: <span class="available">Available</span></p>
+      <button class="request-btn" onclick="window.location.href='user_detials.html'">Request</button>
+    </div>
+    <div class="tool-card">
+      <img src="C:\Users\Jyoti\Desktop\project tool images\5g2MCU6i1t1ln-xxlarge.webp" alt="Chain Saw " />
+      <h3>Chain Saw</h3>
+      <p>Status: <span class="unavailable">Unavailable</span></p>
+      <button class="request-btn" disabled>Request</button>
+    </div>
+    <div class="tool-card">
+      <img src="C:\Users\Jyoti\Desktop\project tool images\images (1).jpg" alt="Hold Saw Blade " />
+      <h3>Hold Saw Blade</h3>
+      <p>Status: <span class="available">Available</span></p>
+      <button class="request-btn" onclick="window.location.href='user_detials.html'">Request</button>
+
+    </div>
+    <div class="tool-card">
+      <img src="C:\Users\Jyoti\Desktop\project tool images\m0801b.jpg" alt="Drill Machine" />
+      <h3>Drill Machine</h3>
+      <p>Status: <span class="unavailable">Unavailable</span></p>
+      <button class="request-btn" disabled>Request</button>
+    </div>
+    <div class="tool-card">
+      <img src="C:\Users\Jyoti\Desktop\project tool images\71zuvhcSVsL.jpg" alt="Cutter" />
+      <h3>Cutter</h3>
+      <p>Status: <span class="available">Available</span></p>
+      <button class="request-btn" onclick="window.location.href='user_detials.html'">Request</button>
+    </div>
+    <div class="tool-card">
+      <img src="C:\Users\Jyoti\Desktop\project tool images\DW801-IN01_4.webp" alt="Grinder" />
+      <h3>Grinder</h3>
+      <p>Status: <span class="unavailable">Unavailable</span></p>
+      <button class="request-btn" disabled>Request</button>
+    </div>
+    <div class="tool-card">
+      <img src="C:\Users\Jyoti\Desktop\project tool images\industrial-painting-hand-gloves.jpg" alt="Painting Glufs" />
+      <h3>painting Glufs </h3>
+      <p>Status: <span class="available">Available</span></p>
+      <button class="request-btn" onclick="window.location.href='user_detials.html'">Request</button>
+    </div>
+    <div class="tool-card">
+      <img src="C:\Users\Jyoti\Desktop\project tool images\pipe wrench.webp" alt="Pipe Wrench" />
+      <h3>Pipe Wrench</h3>
+      <p>Status: <span class="available">Available</span></p>
+      <button class="request-btn" onclick="window.location.href='user_detials.html'">Request</button>
+    </div>
+    <div class="tool-card">
+      <img src="C:\Users\Jyoti\Desktop\project tool images\house hold tool.jpg" alt="House hold Tool" />
+      <h3>House Hold Tool</h3>
+      <p>Status: <span class="available">Available</span></p>
+      <button class="request-btn" onclick="window.location.href='user_detials.html'">Request</button>
+    </div>
+       <div class="tool-card">
+      <img src="C:\Users\Jyoti\Desktop\project tool images\handle shovels.webp" alt="Handle Shovel" />
+      <h3>Handle Shovel</h3>
+      <p>Status: <span class="available">Available</span></p>
+      <button class="request-btn" onclick="window.location.href='user_detials.html'">Request</button>
+    </div>
+        <div class="tool-card">
+      <img src="C:\Users\Jyoti\Desktop\project tool images\piler.jpg" alt="Piler" />
+      <h3>Piler</h3>
+      <p>Status: <span class="available">Available</span></p>
+      <button class="request-btn" onclick="window.location.href='user_detials.html'">Request</button>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+   <h2>Why Community Tool Sharing?</h2>
+
+    <p>
+      Save money, reduce waste, and help your neighbors. This platform lets community members borrow and lend tools locally with trust and ease.<br>
+
+    <b>Follow me on instagram:-</b>nileshprajapati7029<br>
+    <b> Whattapp:-</b>8010452795<br>
+    <b>Email:-</b>nileshprajpati1029@gmail.com<br>
+    </p>
+  </section>
+  <!-- Feedback Form -->
+  <section id="feedback" class="feedback">
+    <h2>💬 We Value Your Feedback</h2>
+    <form id="feedbackForm">
+      <input type="text" id="feedbackName" placeholder="Your Name" required />
+      <textarea id="feedbackOpinion" placeholder="Your Opinion" required></textarea>
+      <button type="submit">Submit Feedback</button>
+    </form>
+    <p id="feedbackMessage" style="color:green; font-weight:bold; margin-top:10px;"></p>
+  </section>
+
+  <!-- Share Tool Modal -->
+  <div id="toolModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">×</span>
+      <h2>Share Your Tool</h2>
+      <form id="shareForm">
+        <input type="text" placeholder="Tool Name" required />
+        <input type="text" placeholder="Condition (e.g., Good, New)" required />
+        <textarea placeholder="Description (Optional)"></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- JavaScript Logic -->
+
+  <script>
+    // Simulated login status — replace with real session/cookie check
+    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+    // Change this to true to simulate a logged-in user
+
+    function handleShareClick() {
+      if (!isLoggedIn) {
+        window.location.href = "register.html?next=share";
+      } else {
+        openModal();
+      }
+    }
+
+    function openModal() {
+      document.getElementById("toolModal").style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById("toolModal").style.display = "none";
+    }
+
+    // Check if redirected from register with ?next=share
+    window.onload = function () {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("next") === "share" && isLoggedIn) {
+        openModal();
+      }
+    }
+
+    // Placeholder for search
+    function filterTools() {
+      const input = document.getElementById("searchBar").value.toLowerCase();
+      const tools = document.querySelectorAll(".tool-card");
+      tools.forEach(tool => {
+        const name = tool.querySelector("h3").textContent.toLowerCase();
+        tool.style.display = name.includes(input) ? "block" : "none";
+      });
+    }
+    document.getElementById("feedbackForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  document.getElementById("feedbackMessage").textContent = "Thank you for your feedback!";
+  this.reset();
+});
+<!----Login Button-->
+
+function loginUser() {
+  alert("Login Successful!");
+  window.location.href = "index.html"; // Redirect to homepage after login
+}
+  </script>
+
+</body>
+</html> 

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Portal</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #79f0f9, #fd77ff, #78f0f5);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+
+    .login-card {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 40px 30px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(10px);
+      color: #fff;
+    }
+
+    .login-card h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #fff;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px 10px;
+      border: none;
+      outline: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.25);
+      color: #fff;
+    }
+
+    .input-group label {
+      position: absolute;
+      top: 12px;
+      left: 10px;
+      color: #ddd;
+      pointer-events: none;
+      transition: 0.3s ease;
+    }
+
+    .input-group input:focus + label,
+    .input-group input:not(:placeholder-shown) + label {
+      top: -10px;
+      left: 8px;
+      font-size: 12px;
+      background: #66a6ff;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    .btn-login, .btn-logout {
+      width: 100%;
+      padding: 12px;
+      background-color: #3b82f6;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .btn-login:hover, .btn-logout:hover {
+      background-color: #2563eb;
+    }
+
+    .error-msg {
+      color: yellow;
+      font-size: 12px;
+      margin-top: -18px;
+      margin-bottom: 15px;
+    }
+
+    @media (max-width: 480px) {
+      .login-card {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-card" id="loginSection">
+    <h2>User Login</h2>
+    <form id="loginForm">
+      <div class="input-group">
+        <input type="text" id="userid" placeholder=" " required />
+        <label for="userid">User ID</label>
+      </div>
+
+      <div class="input-group">
+        <input type="password" id="password" placeholder=" " required />
+        <label for="password">Password</label>
+        <span class="toggle-password" onclick="togglePassword()">👁</span>
+      </div>
+
+      <p id="errorMsg" class="error-msg"></p>
+      <button type="submit" class="btn-login">Login</button>
+    </form>
+  </div>
+
+  <div class="login-card" id="logoutSection" style="display:none;">
+    <h2>Welcome Back 👋</h2>
+    <p style="text-align:center;">You are logged in successfully!</p>
+    <button class="btn-logout" onclick="logout()">Logout</button>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    const errorMsg = document.getElementById('errorMsg');
+    const loginSection = document.getElementById('loginSection');
+    const logoutSection = document.getElementById('logoutSection');
+
+    // Check login state on page load
+    window.onload = () => {
+      if (localStorage.getItem("isLoggedIn") === "true") {
+        loginSection.style.display = "none";
+        logoutSection.style.display = "block";
+      } else {
+        loginSection.style.display = "block";
+        logoutSection.style.display = "none";
+      }
+    };
+
+    // Handle login form submission
+    loginForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const userid = document.getElementById('userid').value;
+      const password = document.getElementById('password').value;
+
+      if (userid.trim() === "" || password.trim() === "") {
+        errorMsg.textContent = "Please fill all fields!";
+      } else if (password.length < 6) {
+        errorMsg.textContent = "Password must be at least 6 characters long.";
+      } else {
+        errorMsg.textContent = "";
+        alert("Login successful!");
+        localStorage.setItem("isLoggedIn", "true");
+        loginSection.style.display = "none";
+        logoutSection.style.display = "block";
+      }
+    });
+
+    function togglePassword() {
+      const passwordInput = document.getElementById('password');
+      passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+    }
+
+    function logout() {
+      localStorage.removeItem("isLoggedIn");
+      alert("You have been logged out.");
+      loginSection.style.display = "block";
+      logoutSection.style.display = "none";
+    }
+  </script>
+</body>
+</html>

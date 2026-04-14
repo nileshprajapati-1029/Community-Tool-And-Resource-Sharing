@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking & Payment</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #79f0f9, #fd77ff,#78f0f5);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .booking-container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(15px);
+      padding: 30px;
+      border-radius: 20px;
+      width: 400px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      color: #fff;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .booking-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #fff;
+    }
+
+    .booking-container label {
+      display: block;
+      margin: 10px 0 5px;
+      font-size: 14px;
+    }
+
+    .booking-container input,
+    .booking-container select,
+    .booking-container textarea {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      outline: none;
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .booking-container input::placeholder,
+    .booking-container textarea::placeholder {
+      color: rgba(255,255,255,0.7);
+    }
+
+    .booking-container textarea {
+      resize: none;
+      height: 70px;
+    }
+
+    .booking-container button {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(45deg, #458cff, #6189ff);
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .booking-container button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    #bookingStatus {
+      margin-top: 15px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="booking-container">
+    <h2>📅 Book Your Slot</h2>
+    <form id="bookingForm">
+
+      <label>Time Slot</label>
+      <select name="timeSlot" required>
+        <option value="">-- Select a Time Slot --</option>
+        <option value="morning">Morning (9 AM - 12 PM)</option>
+        <option value="afternoon">Afternoon (12 PM - 3 PM)</option>
+        <option value="evening">Evening (3 PM - 6 PM)</option>
+        <option value="night">Night (6 PM - 9 PM)</option>
+      </select>
+
+      <label>Date</label>
+      <input type="date" name="date" required>
+
+      <label>Time</label>
+      <input type="time" name="time" required>
+
+      <label>Address</label>
+      <textarea name="address" placeholder="Enter your full address" required></textarea>
+
+      <label>Phone Number</label>
+      <input type="tel" name="phone" placeholder="Enter phone number" maxlength="10" required>
+
+      <button type="submit"><a herf="payment.html">💳 Make Payment</a></button>
+    </form>
+
+    <p id="bookingStatus"></p>
+  </div>
+
+  <script>
+    document.getElementById("bookingForm").onsubmit = async function(e){
+      e.preventDefault();
+
+      const formData = {
+        timeSlot: e.target.timeSlot.value,
+        date: e.target.date.value,
+        time: e.target.time.value,
+        address: e.target.address.value,
+        phone: e.target.phone.value
+      };
+
+      // For now, just show confirmation 
+      const status = document.getElementById("bookingStatus");
+      status.style.color = "lightgreen";
+      status.innerText = "✅ Booking successful! Redirecting to payment...";
+
+      setTimeout(() => {
+        // Redirect to payment page
+        window.location.href = "payment.html";
+      }, 2000);
+    };
+  </script>
+</body>
+</html>

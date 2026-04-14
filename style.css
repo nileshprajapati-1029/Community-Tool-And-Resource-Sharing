@@ -1,0 +1,238 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #f4f4f4;
+  color: #333;
+}
+
+/* Navbar */
+.navbar {
+  background: #222;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar .logo {
+  color: #00d1b2;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-left: 20px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #00d1b2;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #00d1b2, #00a2c3);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.hero button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  background: #fff;
+  color: #00a2c3;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Tool Filter */
+.filter {
+  padding: 20px;
+  text-align: center;
+  background: #e5e5e5;
+}
+
+.filter input {
+  padding: 10px;
+  width: 250px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Tool Cards */
+.tool-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 40px;
+}
+.tool-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 20px; /* space between cards */
+  padding: 20px;
+  display: flex;
+  padding: 20px;
+
+}
+.tool-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex: 1 1 100%; 
+}
+.tool-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+.tool-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+@media (max-width: 768px) {
+  .tool-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .tool-container {
+    grid-template-columns: 1fr;
+    }
+}
+
+
+
+.available {
+  color: green;
+  font-weight: bold;
+}
+
+.unavailable {
+  color: red;
+  font-weight: bold;
+}
+
+.request-btn {
+  margin-top: 10px;
+  padding: 8px 15px;
+  border: none;
+  background: #00a2c3;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.request-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* About */
+.about {
+  font-style:initial;
+  background: linear-gradient(135deg, #00d1b2, #00a2c3);
+  padding: 57px 20px;
+  text-align: center;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+}
+
+.modal-content input,
+.modal-content textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.modal-content button {
+  width: 100%;
+  padding: 10px;
+  background: #00a2c3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.close-btn {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  cursor: pointer;
+  font-size: 24px;
+  color: #333;
+}
+
+.feedback {
+  padding: 30px;
+  background: linear-gradient(135deg, #24e0c3, #00a2c3);
+  text-align: center;
+}
+.feedback form input,
+.feedback form textarea {
+  width: 30%;
+  padding: 10px;
+  margin: 10px 0;
+  margin-left:520px;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 52px;
+}
+.feedback button {
+  padding: 10px 20px;
+  margin-left:210px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.feedback button:hover {
+  background: #45a049;
+}
+

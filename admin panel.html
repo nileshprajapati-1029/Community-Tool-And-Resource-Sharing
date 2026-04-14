@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard Panel</title>
+  <link rel="stylesheet" href="admin.css" />
+  <script src="adminscript.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo">⚙ AdminPanel</div>
+      <nav>
+        <a href="#" class="active">🏠 Dashboard</a>
+        <a href="#">👤 Users</a>
+        <a href="#">📊 Reports</a>
+        <a href="#">⚙ Settings</a>
+        <a href="#">🚪 Logout</a>s
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header>
+        <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+        <input type="text" placeholder="Search..." class="search-input" />
+      </header>
+
+      <section class="dashboard">
+        <div class="card">
+          <h3>Total Users</h3>
+          <p>1,245</p>
+        </div>
+        <div class="card">
+          <h3>New Signups</h3>
+          <p>67</p>
+        </div>
+        <div class="card">
+          <h3>Revenue</h3>
+          <p>$4,578</p>
+        </div>
+        <div class="card">
+          <h3>Server Uptime</h3>
+          <p>99.98%</p>
+        </div>
+      </section>
+
+      <section class="table-section">
+        <h2>Recent Users</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>001</td>
+              <td>Aryan Mehta</td>
+              <td>aryan@example.com</td>
+              <td><span class="status active">Active</span></td>
+            </tr>
+            <tr>
+              <td>002</td>
+              <td>Meera Singh</td>
+              <td>meera@example.com</td>
+              <td><span class="status inactive">Inactive</span></td>
+            </tr>
+            <tr>
+              <td>003</td>
+              <td>Dev Raj</td>
+              <td>dev@example.com</td>
+              <td><span class="status active">Active</span></td>
+            </tr>
+            <tr>
+              <td>004</td>
+              <td>Pankaj Rauniyar </td>
+              <td>pakya@example.com</td>
+              <td><span class="status inactive">Inactive</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

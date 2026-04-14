@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Gateway</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #4facfe, #c857ae, #5648f5);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .payment-container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(15px);
+      padding: 30px;
+      border-radius: 20px;
+      width: 350px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      color: #fff;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .payment-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #fff;
+    }
+
+    .payment-container label {
+      display: block;
+      margin: 10px 0 5px;
+      font-size: 14px;
+    }
+
+    .payment-container input {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      outline: none;
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .payment-container input::placeholder {
+      color: rgba(255,255,255,0.7);
+    }
+
+    .payment-container button {
+      width: 100%;
+      padding: 12px;
+      background: #00c6ff;
+      background: linear-gradient(45deg, #00c6ff, #0072ff);
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .payment-container button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    #paymentStatus {
+      margin-top: 15px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="payment-container">
+    <h2>💳 Secure Payment</h2>
+    <form id="paymentForm">
+      <label>Full Name</label>
+      <input type="text" name="name" placeholder="Your Full Name" required>
+
+      <label>Email</label>
+      <input type="email" name="email" placeholder="Your Email" required>
+
+      <label>Enter UPI id</label>
+      <input type="text" name="UPI id" maxlength="16" placeholder="***********@ibl" required>
+
+      <label>Expiry Date</label>
+      <input type="month" name="expiry" required>
+
+      <label>Amount (₹)</label>
+      <input type="number" name="amount" id="amount" maxlength="5" placeholder="100" required >
+
+      <button type="submit" >Pay Now</button>
+    </form>
+
+    <p id="paymentStatus"></p>
+  </div>
+
+  <script>
+    document.getElementById("paymentForm").onsubmit = async function(e){
+      e.preventDefault();
+
+      const formData = {
+        name: e.target.name.value,
+        email: e.target.email.value,
+         upiid: e.target.upiid.value,
+        expiry: e.target.expiry.value,
+        cvv: e.target.cvv.value,
+        amount: e.target.amount.value
+      };
+
+      const res = await fetch("http://localhost:5000/api/payment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await res.json();
+      const status = document.getElementById("paymentStatus");
+      
+      if(data.success){
+        status.style.color = "lightgreen";
+        status.innerText = "✅ " + data.message;
+        setTimeout(() => window.location.href = "index.html#transactions", 1500);
+      } else {
+        status.style.color = "red";
+        status.innerText = "❌ " + data.message;
+      }
+    };
+  </script>
+</body>
+</html>
